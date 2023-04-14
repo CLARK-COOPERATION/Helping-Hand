@@ -12,9 +12,9 @@ class Progress extends StatefulWidget {
 }
 
 class _ProgressState extends State<Progress> {
-  int lt4 = 0, b46 = 0, b68 = 0, mt8 = 0, sleepSum = 0;
+  int lt4 = 0, b45 = 0, b67 = 0, mt7 = 0, sleepSum = 0;
   int st = 0, j1hm = 0, j2hm = 0, j3lm = 0, j2h1lm = 0, calorieSum = 0;
-  int lt3 = 0, b35 = 0, b57 = 0, mt7 = 0, moodSum = 0;
+  int lt3 = 0, b35 = 0, b57 = 0, mmt7 = 0, moodSum = 0;
 
   Future getSleepData() async {
     String currentUserId = FirebaseAuth.instance.currentUser!.uid;
@@ -63,25 +63,25 @@ class _ProgressState extends State<Progress> {
                         if ((i == SleepRate.ns.toString()) ||
                             (i == SleepRate.lt4.toString())) {
                           lt4++;
-                        } else if (i == SleepRate.b46.toString()) {
-                          b46++;
-                        } else if (i == SleepRate.b68.toString()) {
-                          b68++;
-                        } else if (i == SleepRate.mt8.toString()) {
-                          mt8++;
+                        } else if (i == SleepRate.b45.toString()) {
+                          b45++;
+                        } else if (i == SleepRate.b67.toString()) {
+                          b67++;
+                        } else if (i == SleepRate.mt7.toString()) {
+                          mmt7++;
                         }
                         sleepSum++;
                       }
                       return Column(
                         children: [
                           _linearPercentIndicator('0-3 Hrs', lt4 / sleepSum,
-                              '${lt4 * 100 / sleepSum}%'),
-                          _linearPercentIndicator('3-5 Hrs', b46 / sleepSum,
-                              '${b46 * 100 / sleepSum}%'),
-                          _linearPercentIndicator('5-7 Hrs', b68 / sleepSum,
-                              '${b68 * 100 / sleepSum}%'),
-                          _linearPercentIndicator('7-9 Hrs', mt8 / sleepSum,
-                              '${mt8 * 100 / sleepSum}%'),
+                              '${lt4 * 100 ~/ sleepSum}%'),
+                          _linearPercentIndicator('3-5 Hrs', b45 / sleepSum,
+                              '${b45 * 100 ~/ sleepSum}%'),
+                          _linearPercentIndicator('5-7 Hrs', b67 / sleepSum,
+                              '${b67 * 100 ~/ sleepSum}%'),
+                          _linearPercentIndicator('7-9 Hrs', mmt7 / sleepSum,
+                              '${mmt7 * 100 ~/ sleepSum}%'),
                         ],
                       );
                     } else {
@@ -118,17 +118,17 @@ class _ProgressState extends State<Progress> {
                       return Column(
                         children: [
                           _linearPercentIndicator(' Starve ', st / calorieSum,
-                              '${st * 100 / calorieSum}%'),
+                              '${st * 100 ~/ calorieSum}%'),
                           _linearPercentIndicator('400 Cal', j1hm / calorieSum,
-                              '${j1hm * 100 / calorieSum}%'),
+                              '${j1hm * 100 ~/ calorieSum}%'),
                           _linearPercentIndicator('600 Cal', j2hm / calorieSum,
-                              '${j2hm * 100 / calorieSum}%'),
+                              '${j2hm * 100 ~/ calorieSum}%'),
                           _linearPercentIndicator('800 Cal', j3lm / calorieSum,
-                              '${j3lm * 100 / calorieSum}%'),
+                              '${j3lm * 100 ~/ calorieSum}%'),
                           _linearPercentIndicator(
                               '900 Cal',
                               j2h1lm / calorieSum,
-                              '${j2h1lm * 100 / calorieSum}%'),
+                              '${j2h1lm * 100 ~/ calorieSum}%'),
                         ],
                       );
                     } else {
@@ -146,30 +146,31 @@ class _ProgressState extends State<Progress> {
                         child: CircularProgressIndicator(),
                       );
                     } else if (snapshot.hasData) {
-                      Map<dynamic, dynamic> sleepValues = snapshot.data;
-                      List<dynamic> values = sleepValues.values.toList();
+                      Map<dynamic, dynamic> moodValues = snapshot.data;
+                      List<dynamic> values = moodValues.values.toList();
                       for (int i in values) {
-                        if (i < 4) {
+                        if (i < 3) {
                           lt3++;
-                        } else if (i > 3 && i < 6) {
+                        } else if (i > 2 && i < 5) {
                           b35++;
-                        } else if (i > 5 && i < 7) {
+                        } else if (i > 4 && i < 9) {
                           b57++;
-                        } else if (i > 6) {
+                        } else if (i > 8) {
                           mt7++;
                         }
                         moodSum++;
                       }
                       return Column(
                         children: [
-                          _linearPercentIndicator('    0-3    ', lt3 / moodSum,
-                              '${lt3 * 100 / moodSum}%'),
-                          _linearPercentIndicator('    3-5    ', b35 / moodSum,
-                              '${b35 * 100 / moodSum}%'),
-                          _linearPercentIndicator('    5-7    ', b57 / moodSum,
-                              '${b57 * 100 / moodSum}%'),
-                          _linearPercentIndicator('    7-10  ', mt7 / moodSum,
-                              '${mt7 * 100 / moodSum}%'),
+                          _linearPercentIndicator('    😞    ', lt3 / moodSum,
+                              '${lt3 * 100 ~/ moodSum}%'),
+                          _linearPercentIndicator('    😔    ', b35 / moodSum,
+                              '${b35 * 100 ~/ moodSum}%'),
+                          _linearPercentIndicator('    🙂    ', b57 / moodSum,
+                              '${b57 * 100 ~/ moodSum}%'),
+                          _linearPercentIndicator('    😀    ', mt7 / moodSum,
+                              '${mt7 * 100 ~/ moodSum}%'),
+                          const Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 100)),
                         ],
                       );
                     } else {
@@ -215,24 +216,37 @@ class _ProgressState extends State<Progress> {
   Padding _linearPercentIndicator(
       String leadingText, double percentProgress, String trailingText) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-      child: LinearPercentIndicator(
-        alignment: MainAxisAlignment.center,
-        leading: Text(
-          leadingText,
-          style: const TextStyle(
-            fontSize: 17,
+      padding: const EdgeInsets.fromLTRB(40, 0, 0, 20),
+      child: Row(
+        children: [
+          Flexible(
+            flex: 2,
+            child: Text(
+              leadingText,
+              style: const TextStyle(
+                fontSize: 17,
+              ),
+            ),
           ),
-        ),
-        width: 250.0,
-        percent: percentProgress,
-        progressColor: Theme.of(context).colorScheme.primary,
-        trailing: Text(
-          trailingText,
-          style: const TextStyle(
-            fontSize: 17,
+          Flexible(
+            flex: 8,
+            child: LinearPercentIndicator(
+              alignment: MainAxisAlignment.center,
+              width: 250.0,
+              percent: percentProgress,
+              progressColor: Theme.of(context).colorScheme.primary,
+            ),
           ),
-        ),
+          Flexible(
+            flex: 2,
+            child: Text(
+              trailingText,
+              style: const TextStyle(
+                fontSize: 17,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

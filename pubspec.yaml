@@ -46,6 +46,8 @@ dependencies:
   expandable: ^5.0.1
   image_picker: ^0.8.7+1
   image_cropper: ^3.0.2
+  encrypt: ^5.0.1
+  dialog_flowtter: ^0.3.3
 
 dev_dependencies:
   flutter_test:

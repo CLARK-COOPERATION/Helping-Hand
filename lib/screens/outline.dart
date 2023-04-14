@@ -147,6 +147,14 @@ class _OutlineState extends State<Outline> {
           ),
         ),
 
+        //Floating action button for baymax
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.smart_toy_outlined),
+          onPressed: () {
+            Navigator.pushNamed(context, '/baymax');
+          },
+        ),
+
         //bottom navigation
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(

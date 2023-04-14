@@ -29,8 +29,9 @@ class _LoginState extends State<Login> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Lottie.network(
-                    'https://assets9.lottiefiles.com/packages/lf20_hy4txm7l.json',
+                Lottie.asset(
+                    'assets/login.json',
+                    //'https://assets9.lottiefiles.com/packages/lf20_hy4txm7l.json',
                     height: MediaQuery.of(context).size.height * 0.4),
                 const Text(
                   "Welcome Back",
@@ -119,7 +120,7 @@ class _LoginState extends State<Login> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Gimme a min')),
     );
-    print(emailAddress + password);
+    //print(emailAddress + password);
     try {
       final credential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: emailAddress, password: password);

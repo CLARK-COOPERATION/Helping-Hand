@@ -41,15 +41,18 @@ class _OnBoardingState extends State<OnBoarding> {
                   controller: _controller,
                   children: [
                     onBoardingStyle(
-                        'https://assets1.lottiefiles.com/private_files/lf30_of3skn6w.json',
+                        //'https://assets1.lottiefiles.com/private_files/lf30_of3skn6w.json',
+                        'assets/onBoarding1.json',
                         'Improve your Mental Health',
                         'We help you to access your mental health just by asking you questions frequently'),
                     onBoardingStyle(
-                        'https://assets6.lottiefiles.com/packages/lf20_0fhlytwe.json',
+                        //'https://assets6.lottiefiles.com/packages/lf20_0fhlytwe.json',
+                        'assets/onBoarding2.json',
                         'Consult Doctor',
                         'Do you have a busy schedule or feel inconvenient to consult a doctor in the hospital? No worries we provide you online consultancies'),
                     onBoardingStyle(
-                        'https://assets9.lottiefiles.com/packages/lf20_msdmfngy.json',
+                        //'https://assets9.lottiefiles.com/packages/lf20_msdmfngy.json',
+                        'assets/onBoarding3.json',
                         'Track your data',
                         'We value your privacy and hence we show the users all data we collect for accessing your mental health')
                   ],
@@ -104,7 +107,7 @@ class _OnBoardingState extends State<OnBoarding> {
   Column onBoardingStyle(String animation, String title, String description) {
     return Column(
       children: [
-        Lottie.network(animation,
+        Lottie.asset(animation,
             height: MediaQuery.of(context).size.height * 0.4),
         Padding(
           padding: const EdgeInsets.all(20.0),

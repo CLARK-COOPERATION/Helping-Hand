@@ -1,6 +1,7 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:helping_hand/screens/baymax.dart';
 import 'package:helping_hand/screens/login.dart';
 import 'package:helping_hand/screens/onBoarding.dart';
 import 'package:helping_hand/screens/outline.dart';
@@ -41,6 +42,7 @@ class _MyAppState extends State<MyApp> {
             '/onBoarding': (context) => const OnBoarding(),
             '/outline': (context) => const Outline(),
             '/login': (context) => const Login(),
+            '/baymax': (context) => const Baymax(),
           },
         );
       },

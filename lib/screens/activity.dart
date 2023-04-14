@@ -10,7 +10,7 @@ class Activity extends StatefulWidget {
   State<Activity> createState() => _ActivityState();
 }
 
-enum SleepRate { lt4, b46, b68, mt8, ns }
+enum SleepRate { lt4, b45, b67, mt7, ns }
 
 enum CalorieRate { j1hm, j2hm, j3lm, j2h1lm, st }
 
@@ -23,7 +23,7 @@ class _ActivityState extends State<Activity> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _pageHeading('Progress'),
+        _pageHeading('Activity'),
         Expanded(
           child: PageView(
             controller: _controller,
@@ -49,9 +49,9 @@ class _ActivityState extends State<Activity> {
                             ),
                           ),
                           _sleepTile('Less than 4 hours of sleep', SleepRate.lt4),
-                          _sleepTile('4 to 6 hours of sleep', SleepRate.b46),
-                          _sleepTile('6 to 8 hours of sleep', SleepRate.b68),
-                          _sleepTile('More than 8 hours of sleep', SleepRate.mt8),
+                          _sleepTile('4 to 6 hours of sleep', SleepRate.b45),
+                          _sleepTile('6 to 7 hours of sleep', SleepRate.b67),
+                          _sleepTile('More than 7 hours of sleep', SleepRate.mt7),
                           _sleepTile('Did not sleep', SleepRate.ns),
                           const Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 15)),
                           const Text(
@@ -116,24 +116,26 @@ class _ActivityState extends State<Activity> {
                       ))
                 ],
               ),
-              Column(
-                children: [
-                  const Text(
-                    "Meditation",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const Text(
+                      "Meditation",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  const Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
-                  _meditationBox(
-                      'Inhale and count for 5, Exhale and count for 5. Continue this breathing pattern for at least a few minutes'),
-                  _meditationBox(
-                      'Start by kneading the muscles at the back of your neck and then shoulders. Ake a loose fist and drum swiftly up and down the sides and back of your neck.'),
-                  _meditationBox(
-                      'Once you’re comfortable with sitting meditation and the body scan, you might want to try walking meditation. There’s no rule against trying walking meditation first, but it’s useful to learn the basics before you try to walk and meditate at the same time.'),
-                  _meditationBox('More coming soon Stay tuned!!..'),
-                ],
+                    const Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
+                    _meditationBox(
+                        'Inhale and count for 5, Exhale and count for 5. Continue this breathing pattern for at least a few minutes'),
+                    _meditationBox(
+                        'Start by kneading the muscles at the back of your neck and then shoulders. Ake a loose fist and drum swiftly up and down the sides and back of your neck.'),
+                    _meditationBox(
+                        'Once you’re comfortable with sitting meditation and the body scan, you might want to try walking meditation. There’s no rule against trying walking meditation first, but it’s useful to learn the basics before you try to walk and meditate at the same time.'),
+                    _meditationBox('More coming soon Stay tuned!!..'),
+                  ],
+                ),
               )
             ],
           ),

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "baymax-lgir",
+  "private_key_id": "5cb121a72c158fa649576d9fa40c1677a35b4a46",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9iB5N+x9z2XJQ\n3Qftb6MRRGjDehyrAupp0Iwl7eAGF92HdBIq+AZ79h6CvFG640En5rZmFhqKjqAM\nJJkAoaHQHi3RyGdIUSt8hjUFgqoGvMF1I6xJb3WrDmYR18M+ZEdxcU6pZYucUY0W\nOn1vESIam5+NsjFFWdPb73evb37dZh2I5fNkyL9z5XagyHhYqQr06xn+LLlP1u16\ngcLOE3hShYzX9QmnPcUf2ZldCGJJVVgl5QBEDEim9k4mS7LxoXhrj5YkkrupvMB7\ndaSig9E600aJXIl3bGLtCvs7guLP8RAjMP9IouNwjuwQdbIT9YhQD7pZjdDzvrRC\n59gbAWXlAgMBAAECggEABB6fzgEd22ZIElLjl7kb+cWbY1hVpC/xiXBDg5WKj4dY\nRNf0hyOR/ILKgfv26NGEuonMwCZN2GImP21SOA3LVxs40r0A5bUB9XhzUZXX/UKA\nD/xBA+2cyKWM+WlPsJz8Yo5cb9kpsjGhl/CYhmAAdkSYsLtFT+UWckrftpv9TXGf\nm8S2FD+6vYEPZGPLuoypwiY5N4qkI7LuKhMeB0dv4Xnm9GdtZAqV/pNDv+lDnA/B\nig9AOg3V6YbRtTbTvnuZVps+5sw0kv2v5SxS++ZAeuvfCnNu2/MlK6v8wVfiYaBH\nIyb03ARH+w2mrdnvxxNGsMu3yFqWK/cB/McdsxzrNwKBgQD8QCaYfLL8d34C3svf\n7U1v6NxJUDyX8A2qBI4dFtyMWEcfCh8quqNcW5F04p/ijgL3gxqs9vQXIJxFSzYw\nvFkE0wXsy9N1FD4B4F4eAnHEi3QmECuekhAeXF0y3cxgucrCItcs/U98GeDGUZ6S\nEdh2dgPfubnwTJ9v8P0XsaLhNwKBgQDAWVA7A8uK36+gENi4tJwoJ6WeIfe8UJaE\n9wY6oDezp0F/F1viEyfWF7YoZnUqOFX0H3VcJGDkofxcxoAs4Qa1g2gNzEhrTMEr\nLVaTnT4ZxdzAoQCE7ipgRhHlPYT1ArZL8n8FEVflnbuVhqjTct+PdSeD/XsvW4Va\nGowMHn9vwwKBgQDkWDYYB5oHDSxW8NRhivF0grkW7LlNWRMleyYikxVnPmpzYLhB\n9931tzZ/Nr9BWQi6gkXdmVfwr6aG28TcbUOwKE7OwtxSudY/4JmSVOgj4ZFs+2ph\nCxvoP/hmGX3veYBgKSXcJhqT3uEo5a3D0L/AzKhJGFmHe/VAYkjZ8AXgFQKBgAmV\n6dunCsO29geiD0rVJVsS7rv8sV3fHkEuFk9hoKUBVtBAl8Gidr/Cmr9Uq84Y1J+/\n2Zdn8LQ0JmFxOv4BkNYG4G6fmZRPVOkT71aX5XpfU+r9mwsE23PEyiuEb1XOdss+\nIHpeLOUygSCof01aUi3SBtAbF8J6ayDcZdJMyskFAoGAKG9L+5IoelWo9aghV1Q3\nFs7buTMShyf9R4RKX8QWgKo5vmOMEIegFJRQbvdNuCxOVSWrwOzMHQGejBSZtBWV\n6F9Tc7T9cX4dVKdzC0Xj5L5MUchRqYSPvvsy8qkTywTZE7o4ROk0BTj9z9OLnKUb\nBtNlQeKWS4MgwuQ5107mqzQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "baymax@baymax-lgir.iam.gserviceaccount.com",
+  "client_id": "110331254158019988075",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/baymax%40baymax-lgir.iam.gserviceaccount.com"
+}

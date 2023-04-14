@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:encrypt/encrypt.dart' as encrypt;
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             Container(
-              margin: const EdgeInsets.fromLTRB(0, 120, 0, 0),
+              margin: const EdgeInsets.fromLTRB(0, 120, 0, 20),
               child: const Text(
                 "How's Your Mood Today?",
                 style: TextStyle(
@@ -30,8 +31,15 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            // const Text(
+            //   "Rate your mood",
+            //   style: TextStyle(
+            //     fontWeight: FontWeight.w500,
+            //     fontSize: 18,
+            //   ),
+            // ),
             Container(
-              margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+              margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
               child: slider(),
             ),
             Container(
@@ -82,10 +90,14 @@ class _HomeState extends State<Home> {
                           content: Stack(
                             alignment: Alignment.center,
                             children: [
-                              Lottie.network(
-                                  'https://assets10.lottiefiles.com/packages/lf20_obhph3sh.json'),
-                              Lottie.network(
-                                  'https://assets10.lottiefiles.com/packages/lf20_wkebwzpz.json'),
+                              Lottie.asset(
+                                'assets/done1.json'
+                                  //'https://assets10.lottiefiles.com/packages/lf20_obhph3sh.json'
+                              ),
+                              Lottie.asset(
+                                'assets/done2.json'
+                                  //'https://assets10.lottiefiles.com/packages/lf20_wkebwzpz.json'
+                              ),
                             ],
                           ),
                         );
@@ -101,29 +113,51 @@ class _HomeState extends State<Home> {
   }
 
   Column slider() {
-    return Column(children: [
-      Slider(
-          value: margin.toDouble(),
-          min: 0,
-          max: 10,
-          divisions: 10,
-          //activeColor: const Color(0xFF03DAC5),
-          //Color(0x64FFDAFF)
-          inactiveColor: Colors.grey,
-          label: '$margin',
-          onChanged: (double newValue) {
-            setState(() {
-              margin = newValue.toInt();
-            });
-          },
-          semanticFormatterCallback: (double newValue) {
-            return '${newValue.round()}';
-          }),
-      Text(
-        '$margin',
-        style: const TextStyle(fontSize: 22),
-      )
-    ]);
+    List emoji = ['😞','😞','😞','😔','😔','🙂','🙂','🙂','😀','😀','😀'];
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0,0,0,20),
+          child: Text(
+            '${emoji[margin]}',
+            style: const TextStyle(fontSize: 30),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Flexible(
+              flex: 1,
+              child: Text('😞',style: TextStyle(fontSize: 25),),
+            ),
+            Flexible(
+              flex: 8,
+              child: Slider(
+                  value: margin.toDouble(),
+                  min: 0,
+                  max: 10,
+                  divisions: 10,
+                  //activeColor: const Color(0xFF03DAC5),
+                  //Color(0x64FFDAFF)
+                  inactiveColor: Colors.grey,
+                  label: '$margin',
+                  onChanged: (double newValue) {
+                    setState(() {
+                      margin = newValue.toInt();
+                    });
+                  },
+                  semanticFormatterCallback: (double newValue) {
+                    return '${newValue.round()}';
+                  }),
+            ),
+            const Flexible(
+              flex: 1,
+              child: Text('😃',style: TextStyle(fontSize: 25),),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 
   updateMoodAndFeelingsToBackend(int mood, String feeling) async {
@@ -138,7 +172,14 @@ class _HomeState extends State<Home> {
     DatabaseReference feelingReference = FirebaseDatabase.instance
         .ref('userData/$currentUserId/feelings')
         .push();
+
+    final key=encrypt.Key.fromLength(32);
+    final iv=encrypt.IV.fromLength(16);
+    final encrypter=encrypt.Encrypter(encrypt.AES(key));
+
+    final encrypted=encrypter.encrypt(feeling,iv: iv);
+
     await moodReference.set(mood);
-    await feelingReference.set(feeling);
+    await feelingReference.set(encrypted.base64);
   }
 }

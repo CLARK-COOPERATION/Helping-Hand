@@ -212,6 +212,7 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                     ),
+                    const Padding(padding: EdgeInsets.fromLTRB(0, 75, 0, 0 ),),
                   ],
                 ),
               );

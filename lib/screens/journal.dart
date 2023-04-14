@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:encrypt/encrypt.dart' as encrypt;
+
 
 class Journal extends StatefulWidget {
   const Journal({Key? key}) : super(key: key);
@@ -13,6 +15,9 @@ class _JournalState extends State<Journal> {
   final _formKey = GlobalKey<FormState>();
 
   final _journal = TextEditingController();
+
+  //final cloudFunctionUrl = "https://us-central1-helping-hand-92c43.cloudfunctions.net/uploadMood";
+
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +90,28 @@ class _JournalState extends State<Journal> {
     DatabaseReference journalReference = FirebaseDatabase.instance
         .ref('userData/$currentUserId/journal')
         .push();
-    await journalReference.set(journal);
+    // final response = await http.post(Uri.parse(cloudFunctionUrl), body: {
+    //   "text": journal,
+    // });
+    //
+    // if (response.statusCode == 200) {
+    //   // Successful response
+    //   final jsonResponse = json.decode(response.body);
+    //   //final message = jsonResponse["message"];
+    //   print(jsonResponse);
+    // } else {
+    //   // Error response
+    //   print(response.statusCode);
+    //   print(response.body);
+    // }
+
+  final key=encrypt.Key.fromLength(32);
+  final iv=encrypt.IV.fromLength(16);
+  final encrypter=encrypt.Encrypter(encrypt.AES(key));
+
+  final encrypted=encrypter.encrypt(journal,iv: iv);
+
+
+  await journalReference.set(encrypted.base64);
   }
 }

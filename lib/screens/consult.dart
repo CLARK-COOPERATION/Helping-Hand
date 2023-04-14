@@ -1,7 +1,13 @@
+import 'dart:convert';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
+import '../models/userModel.dart';
 class Consult extends StatefulWidget {
   const Consult({Key? key}) : super(key: key);
 
@@ -49,6 +55,7 @@ class _ConsultState extends State<Consult> {
                       city: doctor['city'],
                       qualification: doctor['qualification'],
                       specification: doctor['specification'],
+                      email: doctor['email'],
                       description: doctor['description']);
                 },
                 child: Padding(
@@ -111,6 +118,7 @@ class _ConsultState extends State<Consult> {
         required String firstName,
         required String lastName,
         required String city,
+        required String email,
         required String qualification,
         required String specification,
         required String description}) {
@@ -153,6 +161,7 @@ class _ConsultState extends State<Consult> {
                       ),
                       onPressed: () {
                         Navigator.pop(context);
+                        sendEmail(firstName,email);
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(
@@ -168,5 +177,54 @@ class _ConsultState extends State<Consult> {
             ),
           );
         });
+  }
+
+  Future sendEmail(String firstName,String email) async{
+    final url=Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+    const serviceId="service_ajylttf";
+    const templateId="template_ye5jlpg";
+    const userId="Cg5cuQeP20yLImQjy";
+    final UserModel user = await getUserInfo();
+    final responce=await http.post(url,headers:{'Content-Type':'application/json'},
+    body:json.encode({
+      "service_id":serviceId,
+      "template_id":templateId,
+      "user_id":userId,
+      "template_params":{
+        "patientName": user.name,
+        "doctorEmail": email,
+        "doctorName": firstName,
+        "patientUsn": user.usn,
+        "patientEmail": user.email,
+        "patientPhno": user.phno,
+      }
+    })
+    );
+    print(responce.statusCode);
+    return responce.statusCode;
+  }
+
+  Future<String> getEachUserInfo(String data) async {
+    String currentUserId = FirebaseAuth.instance.currentUser!.uid;
+    var eachInfo = await FirebaseDatabase.instance
+        .ref('userData/$currentUserId/basicInfo/$data')
+        .get();
+    return eachInfo.value.toString();
+  }
+
+  Future<UserModel> getUserInfo() async {
+    String usn = await getEachUserInfo('usn');
+    String name = await getEachUserInfo('name');
+    String email = await getEachUserInfo('email');
+    String phno = await getEachUserInfo('phno');
+    String profilePicUrl = await getEachUserInfo('profilePicUrl');
+    profilePicUrl ??= await FirebaseStorage.instance.ref('defaultImages/man5').getDownloadURL();
+    UserModel userModel = UserModel(
+        usn: usn,
+        name: name,
+        email: email,
+        phno: phno,
+        profilePicUrl: profilePicUrl);
+    return userModel;
   }
 }

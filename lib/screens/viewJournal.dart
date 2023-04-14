@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:encrypt/encrypt.dart' as encrypt;
 
 class ViewJournal extends StatefulWidget {
   const ViewJournal({Key? key}) : super(key: key);
@@ -40,6 +41,9 @@ class _ViewJournalState extends State<ViewJournal> {
                 } else if (snapshot.hasData) {
                   Map<dynamic, dynamic> sleepValues = snapshot.data;
                   List<dynamic> values = sleepValues.values.toList();
+                  final key=encrypt.Key.fromLength(32);
+                  final iv=encrypt.IV.fromLength(16);
+                  final encrypter=encrypt.Encrypter(encrypt.AES(key));
                   return Padding(
                     padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                     child: ListView.builder(
@@ -62,7 +66,7 @@ class _ViewJournalState extends State<ViewJournal> {
                                       width:
                                       MediaQuery.of(context).size.width * 0.9,
                                       child: Text(
-                                        values[index],
+                                        encrypter.decrypt64(values[index],iv: iv),
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(
                                             fontSize: 18,
