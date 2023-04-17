@@ -7,7 +7,7 @@ Our mental health app is designed for college students in India, featuring mood 
 the website is available on this [link](http://104.154.205.59/) if its not working you can copy paste this url in your favourite browser http://104.154.205.59/ you can even find the link in this repository description.
 
 **Note: Use http and not https**  
-It is prefered to run the webapplication in desktop, and if you want to run it in the mobile application you can download the apk file from this apk file stored in google cloud [apk](https://drive.google.com/file/d/1LySTKVGbOSAdgg2a7NLRHWnpb8DeJPxI/view?usp=sharing) or the link is https://drive.google.com/file/d/1LySTKVGbOSAdgg2a7NLRHWnpb8DeJPxI/view?usp=sharing
+It is prefered to run the webapplication in desktop, and if you want to run it in the mobile application you can download the apk file from this apk file stored in google drive [apk](https://drive.google.com/file/d/1LySTKVGbOSAdgg2a7NLRHWnpb8DeJPxI/view?usp=sharing) or the link is https://drive.google.com/file/d/1LySTKVGbOSAdgg2a7NLRHWnpb8DeJPxI/view?usp=sharing
 
 ## Login info
 Email: kambojiakhilesh@gmail.com  
