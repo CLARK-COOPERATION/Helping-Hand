@@ -6,7 +6,8 @@ Our mental health app is designed for college students in India, featuring mood 
 
 the website is available on this [link](http://104.154.205.59/) if its not working you can copy paste this url in your favourite browser http://104.154.205.59/ you can even find the link in this repository description.
 
-**Note:** Use http and not https  
+**Note: Use http and not https**  
+It is prefered to run the webapplication in desktop, and if you want to run it in the mobile application you can download the apk file from this apk file stored in google cloud [apk](https://drive.google.com/file/d/1LySTKVGbOSAdgg2a7NLRHWnpb8DeJPxI/view?usp=sharing) or the link is https://drive.google.com/file/d/1LySTKVGbOSAdgg2a7NLRHWnpb8DeJPxI/view?usp=sharing
 
 ## Login info
 Email: kambojiakhilesh@gmail.com  
@@ -102,3 +103,7 @@ We've integrated Baymax, an AI chatbot, into our mental health app to assist use
 This is a curated list of music recommended by professionals to help ease the mind, promote relaxation, and improve mental health, particularly during tough times. These selections have been chosen for their ability to create a peaceful and calming atmosphere.
 
 <img src = "https://user-images.githubusercontent.com/93464909/232287324-8c30f366-45ac-4a80-86b6-42a1b85c580b.png" width="225" height="400"/>
+
+## Feedback
+
+Any updations can be done through your valuable feedback you can mail us your feedback on this mail clark134080@gmail.com
