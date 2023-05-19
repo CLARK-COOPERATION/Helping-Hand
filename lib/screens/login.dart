@@ -17,6 +17,8 @@ class _LoginState extends State<Login> {
 
   final _email = TextEditingController();
 
+  bool visible = false;
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -67,9 +69,19 @@ class _LoginState extends State<Login> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 8, horizontal: 16),
                         child: TextFormField(
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
+                          obscureText: visible,
+                          decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
                             labelText: 'Password',
+                              suffix: IconButton(onPressed: (){
+                                setState(() {
+                                  if(visible){
+                                    visible = false;
+                                  }else{
+                                    visible = true;
+                                  }
+                                });
+                              }, icon: Icon(visible == true?Icons.remove_red_eye:Icons.password))
                           ),
                           controller: _password,
                           keyboardType: TextInputType.visiblePassword,
@@ -80,10 +92,6 @@ class _LoginState extends State<Login> {
                             return null;
                           },
                         ),
-                      ),
-                      TextButton(
-                        child: const Text("Forgot Password?"),
-                        onPressed: () {},
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 30),

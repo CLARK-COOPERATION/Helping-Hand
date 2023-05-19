@@ -14,10 +14,13 @@ enum SleepRate { lt4, b45, b67, mt7, ns }
 
 enum CalorieRate { j1hm, j2hm, j3lm, j2h1lm, st }
 
+enum ScreenTimeRate { let2, be24, be46, mot6 }
+
 class _ActivityState extends State<Activity> {
   final PageController _controller = PageController(initialPage: 0);
   SleepRate? _sleepRate = SleepRate.lt4;
   CalorieRate? _calorieRate = CalorieRate.j1hm;
+  ScreenTimeRate? _screenTimeRate = ScreenTimeRate.let2;
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +71,19 @@ class _ActivityState extends State<Activity> {
                           _foodTile(
                               '2 Heavy and 1 Light Meals', CalorieRate.j2h1lm),
                           _foodTile('Starving', CalorieRate.st),
+                          const Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 15)),
+                          const Text(
+                            "Screen Time",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          _screenTimeTile('Less than 2 hours of screen time', ScreenTimeRate.let2),
+                          _screenTimeTile('2 to 4 hours of screen time', ScreenTimeRate.be24),
+                          _screenTimeTile('4 to 6 hours of screen time', ScreenTimeRate.be46),
+                          _screenTimeTile('More than 6 hours of screen time', ScreenTimeRate.mot6),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(100, 10, 100, 10),
                             child: ElevatedButton(
@@ -81,7 +97,7 @@ class _ActivityState extends State<Activity> {
                               ),
                               onPressed: () {
                                 updateActivityInBackend(_sleepRate!.toString(),
-                                    _calorieRate!.toString());
+                                    _calorieRate!.toString(),_screenTimeRate!.toString());
                                 setState(() {
                                   _controller.animateToPage(1,
                                       duration: const Duration(milliseconds: 1000),
@@ -183,6 +199,19 @@ class _ActivityState extends State<Activity> {
     );
   }
 
+  RadioListTile _screenTimeTile(String text, ScreenTimeRate screenTimeRateValue){
+    return RadioListTile(
+      title: Text(text),
+      groupValue: _screenTimeRate,
+      value: screenTimeRateValue,
+      onChanged: (value) {
+        setState(() {
+          _screenTimeRate = value;
+        });
+      },
+    );
+  }
+
   SizedBox _meditationBox(String text) {
     return SizedBox(
       width: 350,
@@ -205,7 +234,7 @@ class _ActivityState extends State<Activity> {
     );
   }
 
-  updateActivityInBackend(String sleepRate, String calorieRate) async {
+  updateActivityInBackend(String sleepRate, String calorieRate, String screenTimeRate) async {
     String currentUserId = FirebaseAuth.instance.currentUser!.uid;
     DatabaseReference sleepReference = FirebaseDatabase.instance
         .ref('userData/$currentUserId/sleepRates')
@@ -213,7 +242,10 @@ class _ActivityState extends State<Activity> {
     DatabaseReference calorieReference = FirebaseDatabase.instance
         .ref('userData/$currentUserId/calorieRates')
         .push();
+    DatabaseReference screenTimeReference = FirebaseDatabase.instance.ref('userData/$currentUserId/screenTimeRates')
+        .push();
     await sleepReference.set(sleepRate);
     await calorieReference.set(calorieRate);
+    await screenTimeReference.set(screenTimeRate);
   }
 }

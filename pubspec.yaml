@@ -48,6 +48,8 @@ dependencies:
   image_cropper: ^3.0.2
   encrypt: ^5.0.1
   dialog_flowtter: ^0.3.3
+  http: ^0.13.6
+  fl_chart: ^0.62.0
 
 dev_dependencies:
   flutter_test:

@@ -161,13 +161,7 @@ class _ConsultState extends State<Consult> {
                       ),
                       onPressed: () {
                         Navigator.pop(context);
-                        sendEmail(firstName,email);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                                "You will be emailed about further details"),
-                          ),
-                        );
+                        dialog(firstName,email);
                       },
                       child: const Text("Connect"),
                     ),
@@ -177,6 +171,63 @@ class _ConsultState extends State<Consult> {
             ),
           );
         });
+  }
+
+  Future dialog(String firstName, String email){
+    return showDialog(context: context, builder: (BuildContext context){
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        content: Wrap(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(8,0,0,10),
+                  child: Text("ARE YOU SURE",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(onPressed: (){
+                      Navigator.pop(context);
+                      sendEmail(firstName,email);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                              "You will be emailed about further details"),
+                        ),
+                      );
+                    },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor:
+                          Theme.of(context).colorScheme.onPrimary,
+                          backgroundColor: Theme.of(context).colorScheme.primary,
+                          elevation: 15,
+                          shape: const StadiumBorder(), //Colors.tealAccent,
+                        ),
+                        child: const Text("YES")),
+                    ElevatedButton(onPressed: (){
+                        Navigator.pop(context);
+                      },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor:
+                          Theme.of(context).colorScheme.onPrimary,
+                          backgroundColor: Theme.of(context).colorScheme.primary,
+                          elevation: 15,
+                          shape: const StadiumBorder(), //Colors.tealAccent,
+                        ),
+                        child: const Text("NO"))
+                  ],
+                )
+              ],
+            ),
+          ],
+        )
+      );
+    });
   }
 
   Future sendEmail(String firstName,String email) async{
