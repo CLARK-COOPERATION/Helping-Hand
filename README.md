@@ -4,7 +4,7 @@ Our mental health app is designed for college students in India, featuring mood 
 
 ## Using the application
 
-the website is available on this [link](http://104.154.205.59/) if its not working you can copy paste this url in your favourite browser http://104.154.205.59/ you can even find the link in this repository description.
+the website is available on this [link](http://35.188.72.142/) if its not working you can copy paste this url in your favourite browser http://35.188.72.142/ you can even find the link in this repository description.
 
 **Note: Use http and not https**  
 It is prefered to run the webapplication in desktop, and if you want to run it in the mobile application you can download the apk file from this apk file stored in google drive [apk](https://drive.google.com/file/d/1LySTKVGbOSAdgg2a7NLRHWnpb8DeJPxI/view?usp=sharing) or the link is https://drive.google.com/file/d/1LySTKVGbOSAdgg2a7NLRHWnpb8DeJPxI/view?usp=sharing
@@ -58,13 +58,16 @@ The mental health of a user can be tracked by two major factors: their food and 
 <p float="left">
 <img src = "https://user-images.githubusercontent.com/93464909/232287450-4672f805-c9d6-41ec-9c72-368f339bb263.png" width="225" height="400"/>
 <img src = "https://user-images.githubusercontent.com/93464909/232287375-700c582e-004a-4ef3-b2e4-230a302b0214.png" width="225" height="400"/>
+<img src = "https://github.com/CLARK-COOPERATION/Helping-Hand/assets/93464909/c233169b-edf0-4882-928e-60c43d5d8aea" width="225" height="400"/>
+
 </p>
 
 ## Progress Page
 
 The progress page in our mental health app displays the user's past mood, sleep, and food routine entries for self-monitoring. It provides users with the necessary information to make informed decisions about their mental health, including the ability to connect with a relevant counselor or take personal action.
 
-<img src = "https://user-images.githubusercontent.com/93464909/232287363-a6c84f18-d560-4e19-8371-dccc5eb09f29.png" width="225" height="400"/>
+<img src = "https://github.com/CLARK-COOPERATION/Helping-Hand/assets/93464909/210b0596-5339-499a-bdcb-7b9e9a628f3a" width="225" height="400"/>
+<img src = "https://github.com/CLARK-COOPERATION/Helping-Hand/assets/93464909/6207ffc2-12f0-4e85-be7c-0d03cc4dbed6" width="225" height="400"/>
 
 ## Counselor Page
 
@@ -73,7 +76,10 @@ The "Counselor Page" on our mental health app displays a list of highly professi
 <p float="left">
 <img src = "https://user-images.githubusercontent.com/93464909/232287437-7da654ca-777a-495b-80fb-26fd534d9d76.png" width="225" height="400"/>
 <img src = "https://user-images.githubusercontent.com/93464909/232287411-30b42dc2-45ee-4daa-a49a-f4887f63e67e.png" width="225" height="400"/>
+<img src = "https://github.com/CLARK-COOPERATION/Helping-Hand/assets/93464909/78b2f029-ca16-4cf9-8807-c3cfca90fa0d" width="225" height="400"/>
+
 </p>
+
 
 ## Profile page
 
@@ -83,7 +89,7 @@ The profile page displays basic information of the user, including the option to
 
 ## Journal Pages
 
-Our mental health app includes a journal feature that allows users to privately and securely reflect on their thoughts, emotions, and experiences. With our app, users can maintain a personal diary where they can record their innermost feelings in a confidential manner. We recognize the importance of privacy and security, especially when it comes to sensitive topics like mental health. Therefore, we have implemented strong measures to protect user data by encrypting it with the AES algorithm and storing it in a secure Firebase database. You can trust that our app is committed to keeping your personal information safe and secure.
+Our mental health app includes a journal feature that allows users to privately and securely reflect on their thoughts, emotions, and experiences. With our app, users can maintain a personal diary where they can record their innermost feelings in a confidential manner. Our journal feature utilizes an advanced NLP model to analyze users' moods and categorize them, enabling detailed analysis and characterization of various emotional states.We recognize the importance of privacy and security, especially when it comes to sensitive topics like mental health. Therefore, we have implemented strong measures to protect user data by encrypting it with the AES algorithm and storing it in a secure Firebase database. You can trust that our app is committed to keeping your personal information safe and secure.
 
 <p float="left">
 <img src = "https://user-images.githubusercontent.com/93464909/232287349-bbc59ac1-82cd-47d6-9343-05bf25c245b2.png" width="225" height="400"/>
